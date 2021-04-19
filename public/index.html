@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Image Editor</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <link rel="styleshett" href="../public/style.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div id="editor">editor</div>
+      <div id="viewport">
+        <canvas id="glCanvas"></canvas>
+      </div>
+    </main>
+
+    <script src="../dist/renderer.js"></script>
+  </body>
+</html>

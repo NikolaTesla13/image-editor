@@ -1,0 +1,33 @@
+{
+  "name": "image-editor",
+  "version": "1.0.0",
+  "description": "A minimal image editor made using electron and webgl.",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "eslint -c .eslintrc --ext .ts ./src",
+    "start": "npm run build && electron ./dist/main.js"
+  },
+  "keywords": [
+    "Electron",
+    "typescript",
+    "webgl",
+    "opengl",
+    "image manipulation",
+    "image editor",
+    "project"
+  ],
+  "author": "Asandei Stefan",
+  "repository": "https://github.com/NikolaTesla13/image-editor",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "eslint": "^7.3.1",
+    "electron": "^9.4.0",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
