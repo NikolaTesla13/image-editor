@@ -7,3 +7,10 @@ This is a portfolio project.
 # Tehnologies used:
 
 Node.js, Electron, Typescript, WebGL
+
+# Todo
+
+    - Add app cache for recent projects
+    - add actual filters
+    - maybe make it responsive
+    - maybe make a better ui 

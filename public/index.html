@@ -15,13 +15,24 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main>
-      <div id="editor">editor</div>
-      <div id="viewport">
-        <canvas id="glCanvas" width="1280" height="720"></canvas>
-        <img src="../assets/images/debug.jpeg" id="image" />
+
+    <div class="init-dashboard">
+      <h1 class="greeting">Pick up where you left off, or start fresh.</h1>
+      <div class="boxes">
+        <div class="recent-proj">
+          <h1>open recent project</h1>
+          <div class="recent-list">
+            <p>yes</p>
+            <p>yeah</p>
+            <p>yesn't</p>
+          </div>
+        </div>
+        <div id="new-proj">
+          <h1>create new project</h1>
+        </div>
       </div>
-    </main>
-    <script src="../dist/renderer.js"></script>
+    </div>
+    
+    <script src="../dist/dashboard.js"></script>
   </body>
 </html>

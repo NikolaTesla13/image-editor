@@ -17,14 +17,14 @@ const main = async () => {
   const canvas = <HTMLCanvasElement>document.getElementById("glCanvas");
   const gl: WebGLRenderingContext = canvas.getContext("webgl");
 
-  let scale = 20; // 10 - 110
+  let scale = 70; // 10 - 110
 
   canvas.onwheel = (event) => {
     event.preventDefault();
 
     scale += event.deltaY * -0.1;
-    scale = Math.min(scale, 110);
-    scale = Math.max(scale, 10);
+    scale = Math.min(scale, 140);
+    scale = Math.max(scale, 30);
   }
 
   if (gl === null) {
@@ -76,10 +76,15 @@ const main = async () => {
   }
 
   const vertices = [
-    0.75,  0.75,   0.0, 0.0,
-    0.75, -0.75,   0.0, 1.0,
-    -0.75, -0.75,  1.0, 1.0,
-    -0.75,  0.75,  1.0, 0.0
+    // 0.75,  0.75,   0.0, 0.0,
+    // 0.75, -0.75,   0.0, 1.0,
+    // -0.75, -0.75,  1.0, 1.0,
+    // -0.75,  0.75,  1.0, 0.0
+
+    (840 + 840/2), (525 + 525/2),   0.0, 0.0,
+    (840 + 840/2), (0 + 525/2),   0.0, 1.0,
+    (0 + 840/2), (0 + 525/2),   1.0, 1.0,
+    (0 + 840/2), (525 + 525/2),   1.0, 0.0
   ];
   const indices = [
    0, 1, 3,
@@ -120,6 +125,7 @@ const main = async () => {
 	var matWorldUniformLocation = gl.getUniformLocation(program, 'mWorld');
 	var matViewUniformLocation = gl.getUniformLocation(program, 'mView');
 	var matProjUniformLocation = gl.getUniformLocation(program, 'mProj');
+  var scaleUniformLocation = gl.getUniformLocation(program, 'scale');
 
   var worldMatrix = new Float32Array(16);
   var viewMatrix = new Float32Array(16);
@@ -138,8 +144,13 @@ const main = async () => {
   mat4.identity(identityMatrix);
 
   const loop = () => {
-    mat4.perspective(projMatrix, glMatrix.toRadian(scale), 1, 0.1, 1000.0); //todo and 45 is for zoom; ik total nonsens 
-		gl.uniformMatrix4fv(matProjUniformLocation, false, projMatrix);
+    mat4.perspective(worldMatrix, glMatrix.toRadian(scale), 1.0, 0.1, 1000.0); //todo and 45 is for zoom; ik total nonsens 
+		mat4.ortho(projMatrix, 0, 1680, 0, 1050, 0.1, 1000);
+    //gl.viewport(0, 0, canvas.width, canvas.width);
+    gl.uniformMatrix4fv(matProjUniformLocation, false, projMatrix);
+    gl.uniformMatrix4fv(matWorldUniformLocation, false, worldMatrix);
+
+    gl.uniform1f(scaleUniformLocation, scale);
 
     gl.clearColor(0.2, 0.2, 0.2, 1.0);
 		gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT);

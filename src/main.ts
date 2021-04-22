@@ -10,7 +10,6 @@ const createWindow = () => {
       preload: path.join(__dirname, "preload.js"),
     },
   });
-
   mainWindow.loadFile(path.join(__dirname, "../public/index.html"));
 };
 
